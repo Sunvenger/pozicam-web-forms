@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "pozicamskproj",
+  "private_key_id": "a530cbfd9bf82ae07b16a0b3a298e3542360283f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC39u89OZebuizt\nT8x7DPR/9N1iXwIVP2DrwgRhxvUcCLk3YgeHc4pUWDPovuUnRsgfWHIWTzC2mrM0\nNNSxsBPXsyxvDfiRVynEug3G4W3t0dau5SQcFqK2gtfWdX93nxmcFbSCB6zkOv3W\ngiaMfVkvrBHpO9/Ayfljlha4HRC5/+Cib6uMPEmODoi9zkAT2VFce8Lzdip4tFwm\nvR1m3mgUqkCyx3MIDRdJmTzpP+/JXDVNTj7BABEhsfZ+AQzEiovC+FF00vzQhsaK\n86a7v57k9GgZKB+psgsbDfVDm2YqMvWsYnDEgnh1ym96UlaE0knV6C22Kd2ITEeK\n1QudpjsZAgMBAAECggEARlMaf6AtibVxCUMRGxUHvoZ/vuQs6qxww49Gl440EwRu\nsXJDCI+tmLKjHV0kQpB3Xiw0aLzbFWMsEFAF4us5mqJ+4PFJTV4xtGefbqCsolYu\nKGumEyrABt8b3XrLQJJMevN9Lpv6hsDaWo8kZ15foq63ph5iWdOcB2rPwpAx3bgC\nO0MGlvE1Z91UaDWeps18DWoKxgnVwaq/rXmDgyLy+/XSPSV9lvxhW62IXBOEbt4h\nFSBodDIfqS1HvwBKDk9O/MgkgRmBLUI4Z6lJA2d/P8QILR/ynhVSSMmq6P9kVtsq\nqviQ2JBm3i8iaK4Jr79gAulsPF4cpteYfW6qorkiZQKBgQDiHb3lLTftT5w80AXx\nFhBetW3sZw5AnhEKe5HzzgCWXhxLJEK0wVa4gCrR9I7s37Q5gZDrfXrt8x/06Bor\nLEJkwYkdH7mp+No+xyk19UY8ZMFe+kGzwjo8hNgiEwMWRv/nf1LV4JwSZ/Rxmgyb\ndJ1Sg3oQ8qkapkUE6NQSJfzltwKBgQDQRxCkuPX9Yuh/4jHQdq08ue/Deu/CFuFP\nZdsNBSADKRqkqy8I2EM/OMgaj9uwK8C7n0EN2slTa2vPkvqkldNiZ2RB9hF7unx/\nU18ulYXqfnL7ifdwCtL2BKkm9pJ5VJ4onAT9dHoJ+xhvfEVroM5TS1gpb8KZCg+v\n4HTpOfxlrwKBgBbdUQ1ylBwwF6lik6c8Ru18xR/Jj/xiv3Bi7HBN3WtXGt9STFiA\n0GcZtrrCUw2K1WuXOXNGnf6fvhSCv9qrwA72Lwo94gVY/6CnfPhS1AZZXeBfx/MI\naeEiwcQ4TfCbv1bGXjb4Xm/SCTrPjATQNvRYDSjXkNf8BjCn5oHrS3ZjAoGAWmh+\nsQIYxYTJp7loJjVdvZ54lUIoEPgdlXmBPIWc/8I37oLgR9aYWjkro1wO4ModP1RB\nyOHPwoY+pjwG0Kq4t15qBrfpnuu0XxCxoGcHWmLJRqb84YXRTTl4s5EUw9YXUUlo\nYRzOXMbCNKKc/7st1Lo/6ry4m/XiGVY1aYfiJ8ECgYAh3Vh6at/iW3RPBcSVjSS+\nfyA63kG1E1dgQJYjl9+4jxBnn9IQTsKCYrV4CWrLbnKZfLeM/j2hB17nN9KpXS/d\n/9JJJmkOe/6AojJZy2nJuAiHyOexFShhHb+xPRI+v7OzLa3+1KBRKuf4wCDXYx+r\nLD4xEHDfJoktJgnLd7rrqQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "service@pozicamskproj.iam.gserviceaccount.com",
+  "client_id": "101398372950285530825",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/service%40pozicamskproj.iam.gserviceaccount.com"
+}

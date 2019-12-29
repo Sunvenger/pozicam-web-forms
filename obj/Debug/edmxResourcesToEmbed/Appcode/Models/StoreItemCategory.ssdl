@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pozicamskModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ItemCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="IconPath" Type="varchar(max)" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StoreItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="150" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="PricingId" Type="int" />
+    <Property Name="CategoryId" Type="int" />
+  </EntityType>
+  <Association Name="FK_StoreItem_ToTable">
+    <End Role="ItemCategory" Type="Self.ItemCategory" Multiplicity="0..1" />
+    <End Role="StoreItem" Type="Self.StoreItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StoreItem">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="pozicamskModel1StoreContainer">
+    <EntitySet Name="ItemCategory" EntityType="Self.ItemCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StoreItem" EntityType="Self.StoreItem" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_StoreItem_ToTable" Association="Self.FK_StoreItem_ToTable">
+      <End Role="ItemCategory" EntitySet="ItemCategory" />
+      <End Role="StoreItem" EntitySet="StoreItem" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pozicamskModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="Description" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Category_StoreItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryId" Type="int" />
+    <Property Name="StoreItemId" Type="int" />
+  </EntityType>
+  <EntityType Name="StoreItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="250" />
+    <Property Name="Description" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="StoreItem_User_Relations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="StoreItemId" Type="int" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="150" />
+    <Property Name="LastName" Type="varchar" MaxLength="150" />
+    <Property Name="Email" Type="varchar" MaxLength="150" />
+    <Property Name="IsVerified" Type="bit" />
+    <Property Name="Password" Type="varchar(max)" />
+    <Property Name="ActivationKey" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Category_StoreItem_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Category_StoreItem" Type="Self.Category_StoreItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Category_StoreItem">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Category_StoreItem_StoreItem">
+    <End Role="StoreItem" Type="Self.StoreItem" Multiplicity="0..1" />
+    <End Role="Category_StoreItem" Type="Self.Category_StoreItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StoreItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Category_StoreItem">
+        <PropertyRef Name="StoreItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreItem_User_Relations_StoreItem">
+    <End Role="StoreItem" Type="Self.StoreItem" Multiplicity="0..1" />
+    <End Role="StoreItem_User_Relations" Type="Self.StoreItem_User_Relations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StoreItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StoreItem_User_Relations">
+        <PropertyRef Name="StoreItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreItem_User_Relations_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="StoreItem_User_Relations" Type="Self.StoreItem_User_Relations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StoreItem_User_Relations">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="pozicamskModelStoreContainer">
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category_StoreItem" EntityType="Self.Category_StoreItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StoreItem" EntityType="Self.StoreItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StoreItem_User_Relations" EntityType="Self.StoreItem_User_Relations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Category_StoreItem_Category" Association="Self.FK_Category_StoreItem_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Category_StoreItem" EntitySet="Category_StoreItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Category_StoreItem_StoreItem" Association="Self.FK_Category_StoreItem_StoreItem">
+      <End Role="StoreItem" EntitySet="StoreItem" />
+      <End Role="Category_StoreItem" EntitySet="Category_StoreItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreItem_User_Relations_StoreItem" Association="Self.FK_StoreItem_User_Relations_StoreItem">
+      <End Role="StoreItem" EntitySet="StoreItem" />
+      <End Role="StoreItem_User_Relations" EntitySet="StoreItem_User_Relations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreItem_User_Relations_User" Association="Self.FK_StoreItem_User_Relations_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="StoreItem_User_Relations" EntitySet="StoreItem_User_Relations" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pozicamskModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Category_StoreItem" Relationship="Self.FK_Category_StoreItem_Category" FromRole="Category" ToRole="Category_StoreItem" />
+  </EntityType>
+  <EntityType Name="Category_StoreItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryId" Type="Int32" />
+    <Property Name="StoreItemId" Type="Int32" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Category_StoreItem_Category" FromRole="Category_StoreItem" ToRole="Category" />
+    <NavigationProperty Name="StoreItem" Relationship="Self.FK_Category_StoreItem_StoreItem" FromRole="Category_StoreItem" ToRole="StoreItem" />
+  </EntityType>
+  <EntityType Name="StoreItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Category_StoreItem" Relationship="Self.FK_Category_StoreItem_StoreItem" FromRole="StoreItem" ToRole="Category_StoreItem" />
+    <NavigationProperty Name="StoreItem_User_Relations" Relationship="Self.FK_StoreItem_User_Relations_StoreItem" FromRole="StoreItem" ToRole="StoreItem_User_Relations" />
+  </EntityType>
+  <EntityType Name="StoreItem_User_Relations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="StoreItemId" Type="Int32" />
+    <NavigationProperty Name="StoreItem" Relationship="Self.FK_StoreItem_User_Relations_StoreItem" FromRole="StoreItem_User_Relations" ToRole="StoreItem" />
+    <NavigationProperty Name="User" Relationship="Self.FK_StoreItem_User_Relations_User" FromRole="StoreItem_User_Relations" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="IsVerified" Type="Boolean" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ActivationKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="StoreItem_User_Relations" Relationship="Self.FK_StoreItem_User_Relations_User" FromRole="User" ToRole="StoreItem_User_Relations" />
+  </EntityType>
+  <Association Name="FK_Category_StoreItem_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Category_StoreItem" Type="Self.Category_StoreItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Category_StoreItem">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Category_StoreItem_StoreItem">
+    <End Role="StoreItem" Type="Self.StoreItem" Multiplicity="0..1" />
+    <End Role="Category_StoreItem" Type="Self.Category_StoreItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StoreItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Category_StoreItem">
+        <PropertyRef Name="StoreItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreItem_User_Relations_StoreItem">
+    <End Role="StoreItem" Type="Self.StoreItem" Multiplicity="0..1" />
+    <End Role="StoreItem_User_Relations" Type="Self.StoreItem_User_Relations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StoreItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StoreItem_User_Relations">
+        <PropertyRef Name="StoreItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreItem_User_Relations_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="StoreItem_User_Relations" Type="Self.StoreItem_User_Relations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StoreItem_User_Relations">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="pozicamskEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Category" EntityType="Self.Category" />
+    <EntitySet Name="Category_StoreItem" EntityType="Self.Category_StoreItem" />
+    <EntitySet Name="StoreItem" EntityType="Self.StoreItem" />
+    <EntitySet Name="StoreItem_User_Relations" EntityType="Self.StoreItem_User_Relations" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <AssociationSet Name="FK_Category_StoreItem_Category" Association="Self.FK_Category_StoreItem_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Category_StoreItem" EntitySet="Category_StoreItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Category_StoreItem_StoreItem" Association="Self.FK_Category_StoreItem_StoreItem">
+      <End Role="StoreItem" EntitySet="StoreItem" />
+      <End Role="Category_StoreItem" EntitySet="Category_StoreItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreItem_User_Relations_StoreItem" Association="Self.FK_StoreItem_User_Relations_StoreItem">
+      <End Role="StoreItem" EntitySet="StoreItem" />
+      <End Role="StoreItem_User_Relations" EntitySet="StoreItem_User_Relations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreItem_User_Relations_User" Association="Self.FK_StoreItem_User_Relations_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="StoreItem_User_Relations" EntitySet="StoreItem_User_Relations" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

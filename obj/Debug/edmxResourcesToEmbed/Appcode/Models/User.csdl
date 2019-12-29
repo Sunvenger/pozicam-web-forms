@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pozicamskModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ItemCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IconPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="StoreItem" Relationship="Self.FK_StoreItem_ToTable" FromRole="ItemCategory" ToRole="StoreItem" />
+  </EntityType>
+  <EntityType Name="StoreItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PricingId" Type="Int32" />
+    <Property Name="CategoryId" Type="Int32" />
+    <NavigationProperty Name="ItemCategory" Relationship="Self.FK_StoreItem_ToTable" FromRole="StoreItem" ToRole="ItemCategory" />
+    <Property Name="OwnerId" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="pozicamskModel.FK_StoreItem_ToTable1" FromRole="StoreItem" ToRole="User1" />
+  </EntityType>
+  <Association Name="FK_StoreItem_ToTable">
+    <End Role="ItemCategory" Type="Self.ItemCategory" Multiplicity="0..1" />
+    <End Role="StoreItem" Type="Self.StoreItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StoreItem">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ItemCategory" EntityType="Self.ItemCategory" />
+    <EntitySet Name="StoreItem" EntityType="Self.StoreItem" />
+    <AssociationSet Name="FK_StoreItem_ToTable" Association="Self.FK_StoreItem_ToTable">
+      <End Role="ItemCategory" EntitySet="ItemCategory" />
+      <End Role="StoreItem" EntitySet="StoreItem" />
+    </AssociationSet>
+    <EntitySet Name="UserSet" EntityType="pozicamskModel.User" />
+    <AssociationSet Name="FK_StoreItem_ToTable1" Association="pozicamskModel.FK_StoreItem_ToTable1">
+      <End Role="User1" EntitySet="UserSet" />
+      <End Role="StoreItem" EntitySet="StoreItem" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="StoreItem" Relationship="pozicamskModel.FK_StoreItem_ToTable1" FromRole="User1" ToRole="StoreItem" />
+  </EntityType>
+  <Association Name="FK_StoreItem_ToTable1">
+    <End Type="pozicamskModel.User" Role="User1" Multiplicity="0..1" />
+    <End Type="pozicamskModel.StoreItem" Role="StoreItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User1">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StoreItem">
+        <PropertyRef Name="OwnerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
