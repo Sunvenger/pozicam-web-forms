@@ -21,6 +21,28 @@
           <Property Name="CategoryId" Type="int" />
           <Property Name="StoreItemId" Type="int" />
         </EntityType>
+        <EntityType Name="ManagmentState">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ManagmentTask">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="500" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="DeadlineDate" Type="datetime" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="CreatorUserId" Type="int" />
+          <Property Name="Cost" Type="money" />
+          <Property Name="Rent" Type="money" />
+          <Property Name="ManagmentStateId" Type="int" />
+        </EntityType>
         <EntityType Name="StoreItem">
           <Key>
             <PropertyRef Name="Id" />
@@ -74,6 +96,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ManagmentTask_ManagmentState">
+          <End Role="ManagmentState" Type="Self.ManagmentState" Multiplicity="0..1" />
+          <End Role="ManagmentTask" Type="Self.ManagmentTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManagmentState">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ManagmentTask">
+              <PropertyRef Name="ManagmentStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManagmentTask_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="ManagmentTask" Type="Self.ManagmentTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManagmentTask">
+              <PropertyRef Name="CreatorUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_StoreItem_User_Relations_StoreItem">
           <End Role="StoreItem" Type="Self.StoreItem" Multiplicity="0..1" />
           <End Role="StoreItem_User_Relations" Type="Self.StoreItem_User_Relations" Multiplicity="*" />
@@ -101,6 +147,8 @@
         <EntityContainer Name="pozicamskModelStoreContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category_StoreItem" EntityType="Self.Category_StoreItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ManagmentState" EntityType="Self.ManagmentState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ManagmentTask" EntityType="Self.ManagmentTask" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StoreItem" EntityType="Self.StoreItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StoreItem_User_Relations" EntityType="Self.StoreItem_User_Relations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
@@ -111,6 +159,14 @@
           <AssociationSet Name="FK_Category_StoreItem_StoreItem" Association="Self.FK_Category_StoreItem_StoreItem">
             <End Role="StoreItem" EntitySet="StoreItem" />
             <End Role="Category_StoreItem" EntitySet="Category_StoreItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManagmentTask_ManagmentState" Association="Self.FK_ManagmentTask_ManagmentState">
+            <End Role="ManagmentState" EntitySet="ManagmentState" />
+            <End Role="ManagmentTask" EntitySet="ManagmentTask" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManagmentTask_User" Association="Self.FK_ManagmentTask_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ManagmentTask" EntitySet="ManagmentTask" />
           </AssociationSet>
           <AssociationSet Name="FK_StoreItem_User_Relations_StoreItem" Association="Self.FK_StoreItem_User_Relations_StoreItem">
             <End Role="StoreItem" EntitySet="StoreItem" />
@@ -145,6 +201,31 @@
           <NavigationProperty Name="Category" Relationship="Self.FK_Category_StoreItem_Category" FromRole="Category_StoreItem" ToRole="Category" />
           <NavigationProperty Name="StoreItem" Relationship="Self.FK_Category_StoreItem_StoreItem" FromRole="Category_StoreItem" ToRole="StoreItem" />
         </EntityType>
+        <EntityType Name="ManagmentState">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ManagmentTask" Relationship="Self.FK_ManagmentTask_ManagmentState" FromRole="ManagmentState" ToRole="ManagmentTask" />
+        </EntityType>
+        <EntityType Name="ManagmentTask">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="DeadlineDate" Type="DateTime" Precision="3" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="CreatorUserId" Type="Int32" />
+          <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Rent" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ManagmentStateId" Type="Int32" />
+          <NavigationProperty Name="ManagmentState" Relationship="Self.FK_ManagmentTask_ManagmentState" FromRole="ManagmentTask" ToRole="ManagmentState" />
+          <NavigationProperty Name="User" Relationship="Self.FK_ManagmentTask_User" FromRole="ManagmentTask" ToRole="User" />
+        </EntityType>
         <EntityType Name="StoreItem">
           <Key>
             <PropertyRef Name="Id" />
@@ -177,6 +258,7 @@
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ActivationKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsAdmin" Type="Boolean" />
+          <NavigationProperty Name="ManagmentTask" Relationship="Self.FK_ManagmentTask_User" FromRole="User" ToRole="ManagmentTask" />
           <NavigationProperty Name="StoreItem_User_Relations" Relationship="Self.FK_StoreItem_User_Relations_User" FromRole="User" ToRole="StoreItem_User_Relations" />
         </EntityType>
         <Association Name="FK_Category_StoreItem_Category">
@@ -200,6 +282,30 @@
             </Principal>
             <Dependent Role="Category_StoreItem">
               <PropertyRef Name="StoreItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManagmentTask_ManagmentState">
+          <End Role="ManagmentState" Type="Self.ManagmentState" Multiplicity="0..1" />
+          <End Role="ManagmentTask" Type="Self.ManagmentTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManagmentState">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ManagmentTask">
+              <PropertyRef Name="ManagmentStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManagmentTask_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="ManagmentTask" Type="Self.ManagmentTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManagmentTask">
+              <PropertyRef Name="CreatorUserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -230,6 +336,8 @@
         <EntityContainer Name="pozicamskEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Category" EntityType="Self.Category" />
           <EntitySet Name="Category_StoreItem" EntityType="Self.Category_StoreItem" />
+          <EntitySet Name="ManagmentState" EntityType="Self.ManagmentState" />
+          <EntitySet Name="ManagmentTask" EntityType="Self.ManagmentTask" />
           <EntitySet Name="StoreItem" EntityType="Self.StoreItem" />
           <EntitySet Name="StoreItem_User_Relations" EntityType="Self.StoreItem_User_Relations" />
           <EntitySet Name="User" EntityType="Self.User" />
@@ -240,6 +348,14 @@
           <AssociationSet Name="FK_Category_StoreItem_StoreItem" Association="Self.FK_Category_StoreItem_StoreItem">
             <End Role="StoreItem" EntitySet="StoreItem" />
             <End Role="Category_StoreItem" EntitySet="Category_StoreItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManagmentTask_ManagmentState" Association="Self.FK_ManagmentTask_ManagmentState">
+            <End Role="ManagmentState" EntitySet="ManagmentState" />
+            <End Role="ManagmentTask" EntitySet="ManagmentTask" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManagmentTask_User" Association="Self.FK_ManagmentTask_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ManagmentTask" EntitySet="ManagmentTask" />
           </AssociationSet>
           <AssociationSet Name="FK_StoreItem_User_Relations_StoreItem" Association="Self.FK_StoreItem_User_Relations_StoreItem">
             <End Role="StoreItem" EntitySet="StoreItem" />
@@ -271,6 +387,30 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="StoreItemId" ColumnName="StoreItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManagmentState">
+            <EntityTypeMapping TypeName="pozicamskModel.ManagmentState">
+              <MappingFragment StoreEntitySet="ManagmentState">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManagmentTask">
+            <EntityTypeMapping TypeName="pozicamskModel.ManagmentTask">
+              <MappingFragment StoreEntitySet="ManagmentTask">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="DeadlineDate" ColumnName="DeadlineDate" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="CreatorUserId" ColumnName="CreatorUserId" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Rent" ColumnName="Rent" />
+                <ScalarProperty Name="ManagmentStateId" ColumnName="ManagmentStateId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

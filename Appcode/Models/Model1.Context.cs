@@ -27,6 +27,8 @@ namespace pozicam_web_forms.Appcode.Models
     
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Category_StoreItem> Category_StoreItem { get; set; }
+        public virtual DbSet<ManagmentState> ManagmentState { get; set; }
+        public virtual DbSet<ManagmentTask> ManagmentTask { get; set; }
         public virtual DbSet<StoreItem> StoreItem { get; set; }
         public virtual DbSet<StoreItem_User_Relations> StoreItem_User_Relations { get; set; }
         public virtual DbSet<User> User { get; set; }

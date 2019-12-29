@@ -4,14 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9366993a54a2465381149a2aad3020cb" Name="Diagram1">
-        <EntityTypeShape EntityType="pozicamskModel.Category" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="pozicamskModel.Category_StoreItem" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pozicamskModel.StoreItem" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pozicamskModel.StoreItem_User_Relations" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pozicamskModel.User" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+      <Diagram DiagramId="5ba4af8606b4485c84a2fb31f117f6cc" Name="Diagram1">
+        <EntityTypeShape EntityType="pozicamskModel.Category" Width="1.5" PointX="3.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pozicamskModel.Category_StoreItem" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pozicamskModel.ManagmentState" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="pozicamskModel.ManagmentTask" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pozicamskModel.StoreItem" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pozicamskModel.StoreItem_User_Relations" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pozicamskModel.User" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
         <AssociationConnector Association="pozicamskModel.FK_Category_StoreItem_Category" ManuallyRouted="false" />
         <AssociationConnector Association="pozicamskModel.FK_Category_StoreItem_StoreItem" ManuallyRouted="false" />
+        <AssociationConnector Association="pozicamskModel.FK_ManagmentTask_ManagmentState" ManuallyRouted="false" />
+        <AssociationConnector Association="pozicamskModel.FK_ManagmentTask_User" ManuallyRouted="false" />
         <AssociationConnector Association="pozicamskModel.FK_StoreItem_User_Relations_StoreItem" ManuallyRouted="false" />
         <AssociationConnector Association="pozicamskModel.FK_StoreItem_User_Relations_User" ManuallyRouted="false" />
       </Diagram>

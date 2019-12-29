@@ -61,6 +61,7 @@
             margin: 0;
             padding: 0;
         }
+        .ChkBoxClass input {width:20px; height:20px;}
     </style>
     <script>
         var __panelOpacity = 1.0;

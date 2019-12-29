@@ -12,27 +12,18 @@ namespace pozicam_web_forms.Appcode.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class ManagmentState
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public ManagmentState()
         {
             this.ManagmentTask = new HashSet<ManagmentTask>();
-            this.StoreItem_User_Relations = new HashSet<StoreItem_User_Relations>();
         }
     
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public Nullable<bool> IsVerified { get; set; }
-        public string Password { get; set; }
-        public string ActivationKey { get; set; }
-        public Nullable<bool> IsAdmin { get; set; }
+        public int id { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ManagmentTask> ManagmentTask { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StoreItem_User_Relations> StoreItem_User_Relations { get; set; }
     }
 }
