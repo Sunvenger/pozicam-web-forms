@@ -27,6 +27,7 @@ namespace pozicam_web_forms.Appcode.Models
         public Nullable<bool> IsVerified { get; set; }
         public string Password { get; set; }
         public string ActivationKey { get; set; }
+        public Nullable<bool> IsAdmin { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StoreItem_User_Relations> StoreItem_User_Relations { get; set; }

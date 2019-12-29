@@ -48,6 +48,7 @@
           <Property Name="IsVerified" Type="bit" />
           <Property Name="Password" Type="varchar(max)" />
           <Property Name="ActivationKey" Type="varchar" MaxLength="50" />
+          <Property Name="IsAdmin" Type="bit" />
         </EntityType>
         <Association Name="FK_Category_StoreItem_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
@@ -175,6 +176,7 @@
           <Property Name="IsVerified" Type="Boolean" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ActivationKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsAdmin" Type="Boolean" />
           <NavigationProperty Name="StoreItem_User_Relations" Relationship="Self.FK_StoreItem_User_Relations_User" FromRole="User" ToRole="StoreItem_User_Relations" />
         </EntityType>
         <Association Name="FK_Category_StoreItem_Category">
@@ -300,6 +302,7 @@
                 <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="ActivationKey" ColumnName="ActivationKey" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
