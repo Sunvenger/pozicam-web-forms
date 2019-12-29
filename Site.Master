@@ -65,6 +65,7 @@
     <script>
         var __panelOpacity = 1.0;
         var __timer;
+        var __timeout
         function step_hide() {
             var loginPanel = document.getElementById('panelLogin');
             loginPanel.style.opacity = __panelOpacity;
@@ -76,6 +77,10 @@
         }
         function BeginHidding() {
             __timer = setInterval(step_hide, 50);
+        }
+
+        function StartDisappearTimer() {
+            __timeout = setTimeout(BeginHidding, 10000)
         }
 
 
@@ -160,7 +165,7 @@
             </Triggers>
             <ContentTemplate>
 
-                <asp:Panel ID="panelLogin" onmouseleave="setTimeout(BeginHidding, 10000)" runat="server" Visible="false" ClientIDMode="Static" Style="position: fixed; top: 90px; right: 50px; width: 250px; padding-bottom: 10px; background-color: white; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+                <asp:Panel ID="panelLogin" onmouseleave="StartDisappearTimer()" onmouseenter="clearTimeout(__timeout);ShowAgain();" runat="server" Visible="false" ClientIDMode="Static" Style="position: fixed; top: 90px; right: 50px; width: 250px; padding-bottom: 10px; background-color: white; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
                     <div style="padding: 10px,10px,10px,10px;">
                         <asp:Table runat="server" CellSpacing="10">
                             <asp:TableRow CssClass="cssFormRow">
