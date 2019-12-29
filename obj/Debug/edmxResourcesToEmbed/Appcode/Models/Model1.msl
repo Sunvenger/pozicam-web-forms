@@ -47,6 +47,7 @@
           <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="ActivationKey" ColumnName="ActivationKey" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -43,6 +43,7 @@
     <Property Name="IsVerified" Type="bit" />
     <Property Name="Password" Type="varchar(max)" />
     <Property Name="ActivationKey" Type="varchar" MaxLength="50" />
+    <Property Name="IsAdmin" Type="bit" />
   </EntityType>
   <Association Name="FK_Category_StoreItem_Category">
     <End Role="Category" Type="Self.Category" Multiplicity="0..1" />

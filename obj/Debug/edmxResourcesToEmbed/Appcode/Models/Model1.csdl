@@ -50,6 +50,7 @@
     <Property Name="IsVerified" Type="Boolean" />
     <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="ActivationKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsAdmin" Type="Boolean" />
     <NavigationProperty Name="StoreItem_User_Relations" Relationship="Self.FK_StoreItem_User_Relations_User" FromRole="User" ToRole="StoreItem_User_Relations" />
   </EntityType>
   <Association Name="FK_Category_StoreItem_Category">
