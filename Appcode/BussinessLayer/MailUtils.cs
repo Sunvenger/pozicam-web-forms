@@ -54,8 +54,8 @@ namespace pozicam_web_forms.Appcode.BussinessLayer
                     smtp.UseDefaultCredentials = false;
                     smtp.Credentials = new System.Net.NetworkCredential("info@pozicam.sk", "s2!e3UPkTf");
                     string url = $@"https://www.pozicam.sk/Services/ApproveTaskService.aspx?key={randomCode}&mail={admin.Email}";
-                    string body = $@"Dobrý deň, Bola pridaná nová úloha: ""{task.Name}"" : <a href=""{url}"">Chcem aktivovať účet</a>";
-                    MailMessage msg = new MailMessage("info@pozicam.sk", admin.Email, "Potvrdenie registrácie", body);
+                    string body = $@"Dobrý deň, Bola pridaná nová úloha: ""{task.Name}"" : <a href=""{url}"">Spravovať úlohu</a>";
+                    MailMessage msg = new MailMessage("info@pozicam.sk", admin.Email, "Niekto zadal novú úlohu", body);
                     msg.IsBodyHtml = true;
                     smtp.Host = "smtp.forpsi.com";
                     smtp.Send(msg);
