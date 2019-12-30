@@ -47,6 +47,7 @@
 
                 </asp:Panel>
                 <asp:Button runat="server" Visible="false" ID="btnDeleteTask" OnClick="btnDelete_Click" CssClass="btn btn-danger" Text="Vymazať označené" />
+                <asp:Button runat="server" Visible="false" ID="btnApprove" OnClick="btnApprove_Click" CssClass="btn btn-danger" Text="Schváliť" />
                 <hr />
                 <asp:Panel runat="server" ID="panelTaskEditor">
                     <asp:Label runat="server" Text="Task editor"></asp:Label>

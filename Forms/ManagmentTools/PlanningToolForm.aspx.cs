@@ -28,26 +28,59 @@ namespace pozicam_web_forms.Forms.ManagmentTools
         {
             if (AppSecurity.CheckAdmin(Session["CurrentUser"] as User))
             {
+
                 formPleaseLogin.Visible = false;
                 panelPlanningTool.Visible = true;
                 btnDeleteTask.Visible = true;
                 btnDeleteTask.CssClass = "btn btn-danger";
-                if (GetSelectedTasks().Count == 0)
-                {
-                    btnDeleteTask.CssClass = "btn btn-danger disabled";
-                    btnAddTask.Visible = true;
-                }
+
 
                 if (!IsPostBack)
                 {
                     using (var context = new pozicamskEntities())
                     {
-                        gvTask.DataSource = (from task in context.ManagmentTask
-                                            orderby task.CreationDate descending
-                                            select task).ToList();
+                        var tasks = (from task in context.ManagmentTask
+                                     orderby task.CreationDate descending
+                                     select task).ToList();
+                        gvTask.DataSource = tasks;
+                        gvTask.DataKeyNames = new string[] { "Id" };
+                        gvTask.DataBind();
+                        if (Request.QueryString["taskid"] != null)
+                        {
+
+                            var taskid = Convert.ToInt32(Request.QueryString["taskid"]);
+                            // select task in gv
+                            foreach (GridViewRow row in gvTask.Rows)
+                            {
+                                var dataKey = gvTask.DataKeys[row.RowIndex];
+                                var keyTaskId = Convert.ToInt32(dataKey["Id"]);
+                                if (keyTaskId == taskid)
+                                {
+                                    var checkBox = row.FindControl("chbTaskSelector") as CheckBox;
+                                    checkBox.Checked = true;
+                                }
+                            }
+
+                            var selectedTask =
+                                (from task in context.ManagmentTask
+                                 where task.Id == taskid
+                                 select task).FirstOrDefault();
+                            UpdateTaskForm(new List<ManagmentTask> { selectedTask });
+
+
+
+
+
+
+                        }
                     }
-                    gvTask.DataKeyNames = new string[] { "Id" };
-                    gvTask.DataBind();
+
+
+                }
+                if (GetSelectedTasks().Count == 0)
+                {
+                    btnDeleteTask.CssClass = "btn btn-danger disabled";
+                    btnAddTask.Visible = true;
                 }
             }
             else
@@ -96,10 +129,17 @@ namespace pozicam_web_forms.Forms.ManagmentTools
             var index = row.RowIndex;
             var TaskId = (Int32)gvTask.DataKeys[index]["Id"];
             var selectedTasks = GetSelectedTasks();
+            UpdateTaskForm(selectedTasks);
+
+        }
+
+        private void UpdateTaskForm(List<ManagmentTask> selectedTasks)
+        {
             if (selectedTasks != null)
             {
                 if (selectedTasks.Count > 0)
                 {
+
                     var firstTask = selectedTasks[0];
                     tbTaskName.Text = firstTask.Name;
                     tbTaskDescription.Text = firstTask.Description;
@@ -109,15 +149,26 @@ namespace pozicam_web_forms.Forms.ManagmentTools
                     calTaskDeadline.SelectedDate = (DateTime)firstTask.DeadlineDate;
                     btnApplyChanges.Visible = true;
                     btnAddTask.Visible = false;
+                    btnDeleteTask.Visible = true;
+                    btnApprove.Visible = true;
+                    foreach (var taskToCheck in selectedTasks)
+                    {
+                       if(taskToCheck.ManagmentStateId != 1)
+                        { 
+                            btnApprove.Visible = false;
+                        }
+                    }
+                    
 
                 }
                 else
                 {
                     btnApplyChanges.Visible = false;
                     btnAddTask.Visible = true;
+                    btnDeleteTask.Visible = false;
+                    btnApprove.Visible = false;
                 }
             }
-
         }
 
         protected void gvTask_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -167,7 +218,7 @@ namespace pozicam_web_forms.Forms.ManagmentTools
 
                         taskToEdit.Cost = Convert.ToDecimal(tbTaskCost.Text);
                         taskToEdit.Rent = Convert.ToDecimal(tbTaskRent.Text);
-                        
+
                         taskToEdit.CreatorUserId = (Session["CurrentUser"] as User).Id;
                         taskToEdit.DeadlineDate = calTaskDeadline.SelectedDate;
                         taskToEdit.ManagmentStateId = 1;
@@ -211,7 +262,7 @@ namespace pozicam_web_forms.Forms.ManagmentTools
                 }
 
                 string url = Request.RawUrl.ToString();
-                
+
                 Response.Redirect(url); // redirect on itself
 
             }
@@ -235,6 +286,25 @@ namespace pozicam_web_forms.Forms.ManagmentTools
                 string url = Request.RawUrl.ToString();
                 Response.Redirect(url); // redirect on itself
             }
+        }
+
+        protected void btnApprove_Click(object sender, EventArgs e)
+        {
+            var selectedTasks = GetSelectedTasks();
+            foreach (var selectedTask in selectedTasks)
+            {
+                using (var context = new pozicamskEntities())
+                {
+                    var taskToApprove = (from task in context.ManagmentTask
+                                         where task.Id == selectedTask.Id
+                                         select task).FirstOrDefault();
+                    taskToApprove.ManagmentStateId = 2;
+                    context.SaveChanges();
+                    MailUtils.SendApprovementComfirmation(taskToApprove);
+                }
+            }
+            string url = Request.RawUrl.ToString();
+            Response.Redirect(url); // redirect on itself
         }
     }
 }

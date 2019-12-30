@@ -53,7 +53,7 @@ namespace pozicam_web_forms.Appcode.BussinessLayer
                     SmtpClient smtp = new SmtpClient();
                     smtp.UseDefaultCredentials = false;
                     smtp.Credentials = new System.Net.NetworkCredential("info@pozicam.sk", "s2!e3UPkTf");
-                    string url = $@"https://www.pozicam.sk/Services/ApproveTaskService.aspx?key={randomCode}&mail={admin.Email}";
+                    string url = $@"https://www.pozicam.sk/Forms/ManagmentTools/PlanningToolForm.aspx?taskid={task.Id}";
                     string body = $@"Dobrý deň, Bola pridaná nová úloha: ""{task.Name}"" : <a href=""{url}"">Spravovať úlohu</a>";
                     MailMessage msg = new MailMessage("info@pozicam.sk", admin.Email, "Niekto zadal novú úlohu", body);
                     msg.IsBodyHtml = true;
@@ -61,6 +61,37 @@ namespace pozicam_web_forms.Appcode.BussinessLayer
                     smtp.Send(msg);
 
                 }
+            }
+        }
+
+
+        public static void SendApprovementComfirmation(ManagmentTask input_task)
+        {
+
+            using (var context = new pozicamskEntities())
+            {
+
+                //taskOwner
+                var userId = (from task in context.ManagmentTask
+                              where task.Id == input_task.Id
+                              select task.CreatorUserId).FirstOrDefault();
+                string ownerEmail = (from user in context.User
+                                 where user.Id == userId
+                                 select user.Email).FirstOrDefault();
+
+                String randomCode = RandomString(20);
+
+                SmtpClient smtp = new SmtpClient();
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new System.Net.NetworkCredential("info@pozicam.sk", "s2!e3UPkTf");
+                string url = $@"https://www.pozicam.sk/Forms/ManagmentTools/PlanningToolForm.aspx?taskid={input_task.Id}";
+                string body = $@"Dobrý deň, Bola Bola schválená úloha, ktorú ste vytvorili: ""{input_task.Name}"" : <a href=""{url}"">Zobraziť úlohu</a>";
+                MailMessage msg = new MailMessage("info@pozicam.sk", ownerEmail, "Vaša úloha bola schválená", body);
+                msg.IsBodyHtml = true;
+                smtp.Host = "smtp.forpsi.com";
+                smtp.Send(msg);
+
+
             }
         }
         public static void CreateTestMessage2(string server)
