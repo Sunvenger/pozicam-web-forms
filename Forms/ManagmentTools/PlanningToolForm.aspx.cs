@@ -33,7 +33,9 @@ namespace pozicam_web_forms.Forms.ManagmentTools
                 btnDeleteTask.Visible = true;
                 btnDeleteTask.CssClass = "btn btn-danger";
                 if (GetSelectedTasks().Count == 0)
-                { btnDeleteTask.CssClass = "btn btn-danger disabled"; }
+                { btnDeleteTask.CssClass = "btn btn-danger disabled";
+                    btnAddTask.Visible = true;
+                }
 
                 if (!IsPostBack)
                 {
@@ -146,7 +148,7 @@ namespace pozicam_web_forms.Forms.ManagmentTools
         {
             using (var context = new pozicamskEntities())
             {
-
+                
                 if (AppSecurity.CheckAdmin(Session["CurrentUser"] as User))
                 {
                     ManagmentTask newTask = new Appcode.Models.ManagmentTask();
@@ -156,11 +158,13 @@ namespace pozicam_web_forms.Forms.ManagmentTools
                     newTask.Name = tbTaskName.Text;
                     newTask.Description = tbTaskDescription.Text;
                     newTask.Priority = Convert.ToInt32(tbTaskPriority.Text);
+
                     newTask.Cost = Convert.ToDecimal(tbTaskCost.Text);
                     newTask.Rent = Convert.ToDecimal(tbTaskRent.Text);
                     newTask.CreationDate = DateTime.Now;
                     newTask.CreatorUserId = (Session["CurrentUser"] as User).Id;
                     newTask.DeadlineDate = calTaskDeadline.SelectedDate;
+
                     newTask.ManagmentStateId = 1;
 
                     context.ManagmentTask.Add(newTask);
@@ -179,6 +183,7 @@ namespace pozicam_web_forms.Forms.ManagmentTools
             var tesksToDelete = GetSelectedTasks();
             using (var context = new pozicamskEntities())
             {
+                
                 foreach (var taskToDel in tesksToDelete)
                 {
                     var taskToDelete = (from task in context.ManagmentTask
@@ -186,10 +191,7 @@ namespace pozicam_web_forms.Forms.ManagmentTools
                                         select task).First();
                     context.ManagmentTask.Remove(taskToDelete);
 
-
-
                 }
-
                 context.SaveChanges();
                 string url = Request.RawUrl.ToString();
                 Response.Redirect(url); // redirect on itself

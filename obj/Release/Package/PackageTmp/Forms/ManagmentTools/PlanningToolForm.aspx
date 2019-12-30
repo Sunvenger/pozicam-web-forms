@@ -15,7 +15,7 @@
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>
-
+        
         <hr />
         <asp:UpdatePanel runat="server">
             <ContentTemplate>
@@ -46,7 +46,7 @@
                     </asp:GridView>
 
                 </asp:Panel>
-                <asp:Button runat="server" Visible="false" ID="btnDeleteTask" OnClick="btnDelete_Click" CssClass="btn btn-danger" Text="Vymazať označené" />
+                <asp:Button runat="server" Visible="false" ID="btnDeleteTask" OnClick="btnDelete_Click" CssClass="btn btn-danger" Text="Vymazať označené"/>
                 <hr />
                 <asp:Panel runat="server" ID="panelTaskEditor">
                     <asp:Label runat="server" Text="Task editor"></asp:Label>
@@ -62,10 +62,7 @@
 
                     <div style="margin-top: 30px">
                         <asp:Label runat="server" Text="Termín dokončenia"></asp:Label>
-
-
-                        <asp:Calendar  Width="250" Height="250"  runat="server" ID="calTaskDeadline"></asp:Calendar>
-
+                        <asp:Calendar CssClass="calendarWrapper" runat="server" ID="calTaskDeadline"></asp:Calendar>
                     </div>
 
                     <div style="margin-top: 30px">

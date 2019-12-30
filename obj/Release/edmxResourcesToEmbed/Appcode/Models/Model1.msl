@@ -19,6 +19,30 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ManagmentState">
+      <EntityTypeMapping TypeName="pozicamskModel.ManagmentState">
+        <MappingFragment StoreEntitySet="ManagmentState">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ManagmentTask">
+      <EntityTypeMapping TypeName="pozicamskModel.ManagmentTask">
+        <MappingFragment StoreEntitySet="ManagmentTask">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="DeadlineDate" ColumnName="DeadlineDate" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="CreatorUserId" ColumnName="CreatorUserId" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Rent" ColumnName="Rent" />
+          <ScalarProperty Name="ManagmentStateId" ColumnName="ManagmentStateId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="StoreItem">
       <EntityTypeMapping TypeName="pozicamskModel.StoreItem">
         <MappingFragment StoreEntitySet="StoreItem">
@@ -47,6 +71,7 @@
           <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="ActivationKey" ColumnName="ActivationKey" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
