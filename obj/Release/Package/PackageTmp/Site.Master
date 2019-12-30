@@ -118,6 +118,8 @@
     .myCalendar tr td.myCalendarDay, .myCalendar tr th.myCalendarDayHeader
     {
         border-right: solid 1px #ddd;
+        width: 25px;
+        height:25px;
     }
 
     .myCalendar tr td:last-child.myCalendarDay, .myCalendar tr th:last-child.myCalendarDayHeader

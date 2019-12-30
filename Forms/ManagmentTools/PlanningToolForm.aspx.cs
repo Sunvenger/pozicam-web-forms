@@ -151,10 +151,12 @@ namespace pozicam_web_forms.Forms.ManagmentTools
                 {
                     using (var context = new pozicamskEntities())
                     {
+                        var firstId = selectedTasks.First().Id;
+
                         var taskToEdit = (from task in context.ManagmentTask
-                                          where task.Id == selectedTasks[0].Id
-                                          orderby task.CreationDate descending
+                                          where (task.Id == firstId)
                                           select task).First();
+
                         taskToEdit.Name = tbTaskName.Text;
                         taskToEdit.Description = tbTaskDescription.Text;
                         taskToEdit.Priority = Convert.ToInt32(tbTaskPriority.Text);
@@ -169,6 +171,8 @@ namespace pozicam_web_forms.Forms.ManagmentTools
                         context.SaveChanges();
 
                     }
+                    string url = Request.RawUrl.ToString();
+                    Response.Redirect(url); // redirect on itself
                 }
             }
         }

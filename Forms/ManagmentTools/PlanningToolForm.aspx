@@ -50,43 +50,66 @@
                 <hr />
                 <asp:Panel runat="server" ID="panelTaskEditor">
                     <asp:Label runat="server" Text="Task editor"></asp:Label>
-                    <div style="margin-top: 30px">
-                        <asp:Label runat="server" Text="Názov úlohy"></asp:Label>
-                        <asp:TextBox runat="server" ID="tbTaskName" CssClass="cssTextBox"></asp:TextBox>
-                    </div>
+                    <asp:Table runat="server" >
+                        <asp:TableRow CssClass="cssFormRow">
 
-                    <div style="margin-top: 30px">
-                        <asp:Label runat="server" Text="Popis"></asp:Label>
-                        <asp:TextBox runat="server" ID="tbTaskDescription" CssClass="cssTextBox"></asp:TextBox>
-                    </div>
+                            <asp:TableCell>
+                                <asp:Label runat="server" Text="Názov úlohy"></asp:Label>
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:TextBox runat="server" ID="tbTaskName" CssClass="cssTextBox"></asp:TextBox>
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow CssClass="cssFormRow">
+                            <asp:TableCell>
+                                <asp:Label runat="server" Text="Popis"></asp:Label>
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:TextBox runat="server" ID="tbTaskDescription" TextMode="MultiLine"  CssClass="cssTextBoxMulti"></asp:TextBox>
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow CssClass="cssFormRow">
+                            <asp:TableCell>
+                                <asp:Label runat="server" Text="Termín dokončenia"></asp:Label>
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:Calendar Width="250" Height="250" runat="server" ID="calTaskDeadline"></asp:Calendar>
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow CssClass="cssFormRow">
+                            <asp:TableCell>
+                                <asp:Label runat="server" Text="Priorita"></asp:Label>
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:TextBox runat="server" ID="tbTaskPriority" CssClass="cssTextBox"></asp:TextBox>
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow CssClass="cssFormRow">
+                            <asp:TableCell>
+                                <asp:Label runat="server" Text="Náklady"></asp:Label>
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:TextBox runat="server" ID="tbTaskCost" CssClass="cssTextBox"></asp:TextBox>
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow CssClass="cssFormRow">
+                            <asp:TableCell>
+                                <asp:Label runat="server" Text="Výnos"></asp:Label>
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:TextBox runat="server" ID="tbTaskRent" CssClass="cssTextBox"></asp:TextBox>
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow CssClass="cssFormRow">
+                            <asp:TableCell>
+                                <asp:Button runat="server" Visible="false" ID="btnApplyChanges" Text="Upraviť" class="btn btn-success" OnClick="btnApplyChanges_Click" />
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:Button runat="server" Visible="false" ID="btnAddTask" Text="Vytvoriť novú úlohu" class="btn btn-success" OnClick="btnAddTask_Click" />
+                            </asp:TableCell>
+                        </asp:TableRow>
 
-                    <div style="margin-top: 30px">
-                        <asp:Label runat="server" Text="Termín dokončenia"></asp:Label>
-
-
-                        <asp:Calendar  Width="250" Height="250"  runat="server" ID="calTaskDeadline"></asp:Calendar>
-
-                    </div>
-
-                    <div style="margin-top: 30px">
-                        <asp:Label runat="server" Text="Priorita"></asp:Label>
-                        <asp:TextBox runat="server" ID="tbTaskPriority" CssClass="cssTextBox"></asp:TextBox>
-                    </div>
-
-                    <div style="margin-top: 30px">
-                        <asp:Label runat="server" Text="Náklady"></asp:Label>
-                        <asp:TextBox runat="server" ID="tbTaskCost" CssClass="cssTextBox"></asp:TextBox>
-                    </div>
-
-                    <div style="margin-top: 30px">
-                        <asp:Label runat="server" Text="Výnos"></asp:Label>
-                        <asp:TextBox runat="server" ID="tbTaskRent" CssClass="cssTextBox"></asp:TextBox>
-                    </div>
-                    <div>
-                        <asp:Button runat="server" Visible="false" ID="btnApplyChanges" Text="Upraviť" class="btn btn-success" OnClick="btnApplyChanges_Click" />
-                        <asp:Button runat="server" Visible="false" ID="btnAddTask" Text="Vytvoriť novú úlohu" class="btn btn-success" OnClick="btnAddTask_Click" />
-
-                    </div>
+                    </asp:Table>
                 </asp:Panel>
             </ContentTemplate>
         </asp:UpdatePanel>
