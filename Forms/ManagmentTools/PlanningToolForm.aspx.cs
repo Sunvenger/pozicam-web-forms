@@ -33,7 +33,8 @@ namespace pozicam_web_forms.Forms.ManagmentTools
                 btnDeleteTask.Visible = true;
                 btnDeleteTask.CssClass = "btn btn-danger";
                 if (GetSelectedTasks().Count == 0)
-                { btnDeleteTask.CssClass = "btn btn-danger disabled";
+                {
+                    btnDeleteTask.CssClass = "btn btn-danger disabled";
                     btnAddTask.Visible = true;
                 }
 
@@ -41,7 +42,9 @@ namespace pozicam_web_forms.Forms.ManagmentTools
                 {
                     using (var context = new pozicamskEntities())
                     {
-                        gvTask.DataSource = context.ManagmentTask.ToList();
+                        gvTask.DataSource = (from task in context.ManagmentTask
+                                            orderby task.CreationDate descending
+                                            select task).ToList();
                     }
                     gvTask.DataKeyNames = new string[] { "Id" };
                     gvTask.DataBind();
@@ -141,14 +144,40 @@ namespace pozicam_web_forms.Forms.ManagmentTools
 
         protected void btnApplyChanges_Click(object sender, EventArgs e)
         {
+            if (AppSecurity.CheckAdmin(Session["CurrentUser"] as User))
+            {
+                var selectedTasks = GetSelectedTasks();
+                if (selectedTasks.Count > 0)
+                {
+                    using (var context = new pozicamskEntities())
+                    {
+                        var taskToEdit = (from task in context.ManagmentTask
+                                          where task.Id == selectedTasks[0].Id
+                                          orderby task.CreationDate descending
+                                          select task).First();
+                        taskToEdit.Name = tbTaskName.Text;
+                        taskToEdit.Description = tbTaskDescription.Text;
+                        taskToEdit.Priority = Convert.ToInt32(tbTaskPriority.Text);
 
+                        taskToEdit.Cost = Convert.ToDecimal(tbTaskCost.Text);
+                        taskToEdit.Rent = Convert.ToDecimal(tbTaskRent.Text);
+                        
+                        taskToEdit.CreatorUserId = (Session["CurrentUser"] as User).Id;
+                        taskToEdit.DeadlineDate = calTaskDeadline.SelectedDate;
+                        taskToEdit.ManagmentStateId = 1;
+
+                        context.SaveChanges();
+
+                    }
+                }
+            }
         }
 
         protected void btnAddTask_Click(object sender, EventArgs e)
         {
             using (var context = new pozicamskEntities())
             {
-                
+
                 if (AppSecurity.CheckAdmin(Session["CurrentUser"] as User))
                 {
                     ManagmentTask newTask = new Appcode.Models.ManagmentTask();
@@ -171,9 +200,9 @@ namespace pozicam_web_forms.Forms.ManagmentTools
                     context.SaveChanges();
                     Session["DelayedReload"] = true;
                 }
-                    
-                    string url = Request.RawUrl.ToString();
-                    Response.Redirect(url); // redirect on itself
+
+                string url = Request.RawUrl.ToString();
+                Response.Redirect(url); // redirect on itself
 
             }
         }
@@ -183,7 +212,7 @@ namespace pozicam_web_forms.Forms.ManagmentTools
             var tesksToDelete = GetSelectedTasks();
             using (var context = new pozicamskEntities())
             {
-                
+
                 foreach (var taskToDel in tesksToDelete)
                 {
                     var taskToDelete = (from task in context.ManagmentTask
