@@ -64,3 +64,71 @@ c:\users\sunvenger\documents\visual studio 2017\Projects\pozicam web forms\pozic
 c:\users\sunvenger\documents\visual studio 2017\Projects\pozicam web forms\pozicam web forms\bin\EntityFramework.SqlServer.dll
 c:\users\sunvenger\documents\visual studio 2017\Projects\pozicam web forms\pozicam web forms\bin\EntityFramework.xml
 c:\users\sunvenger\documents\visual studio 2017\Projects\pozicam web forms\pozicam web forms\bin\EntityFramework.SqlServer.xml
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\ApplicationInsights.config
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\csc.exe
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\csc.exe.config
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\csc.rsp
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\csi.exe
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\csi.rsp
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\System.AppContext.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\System.Collections.Immutable.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\System.IO.FileSystem.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\System.Reflection.Metadata.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\vbc.exe
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\vbc.exe.config
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\vbc.rsp
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\VBCSCompiler.exe
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\roslyn\VBCSCompiler.exe.config
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\pozicam web forms.dll.config
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\pozicam web forms.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\pozicam web forms.pdb
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Antlr3.Runtime.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\AspNet.ScriptManager.bootstrap.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\AspNet.ScriptManager.jQuery.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\EntityFramework.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\EntityFramework.SqlServer.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Microsoft.AI.DependencyCollector.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Microsoft.AI.Web.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Microsoft.AI.WindowsServer.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Microsoft.ApplicationInsights.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Microsoft.AspNet.FriendlyUrls.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Microsoft.ScriptManager.MSAjax.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Microsoft.ScriptManager.WebForms.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Microsoft.Web.Infrastructure.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Newtonsoft.Json.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\System.Web.Optimization.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\WebGrease.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\EntityFramework.xml
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\EntityFramework.SqlServer.xml
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\System.Web.Optimization.xml
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Antlr3.Runtime.pdb
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Microsoft.AspNet.FriendlyUrls.xml
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Newtonsoft.Json.xml
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Microsoft.ApplicationInsights.xml
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Microsoft.AI.DependencyCollector.xml
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Microsoft.AI.WindowsServer.xml
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\bin\Microsoft.AI.Web.xml
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\obj\Debug\pozicam web forms.csprojAssemblyReference.cache
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\obj\Debug\pozicam web forms.csproj.CoreCompileInputs.cache
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\obj\Debug\pozicam web forms.csproj.CopyComplete
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\obj\Debug\pozicam web forms.dll
+D:\Users\skkoryt\Documents\GitHub\pozicam-web-forms\pozicam web forms\obj\Debug\pozicam web forms.pdb
