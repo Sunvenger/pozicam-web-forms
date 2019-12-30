@@ -85,6 +85,10 @@ namespace pozicam_web_forms.Forms.ManagmentTools
             }
             return selectedTasks;
         }
+        protected void OnTaskCreated(ManagmentTask newTask)
+        {
+            MailUtils.SendApprovementRequest(newTask);
+        }
 
         protected void chbTaskSelector_CheckedChanged(object sender, EventArgs e)
         {
@@ -203,9 +207,11 @@ namespace pozicam_web_forms.Forms.ManagmentTools
                     context.ManagmentTask.Add(newTask);
                     context.SaveChanges();
                     Session["DelayedReload"] = true;
+                    OnTaskCreated(newTask);
                 }
 
                 string url = Request.RawUrl.ToString();
+                
                 Response.Redirect(url); // redirect on itself
 
             }

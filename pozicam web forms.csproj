@@ -158,6 +158,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Services\ApproveTaskService.aspx" />
     <Content Include="Forms\MailActivationForm.aspx" />
     <Content Include="Forms\ManagmentTools\PlanningToolForm.aspx" />
     <Content Include="Forms\PleaseVerifyForm.aspx" />
@@ -279,6 +280,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ApproveTaskService.aspx.cs">
+      <DependentUpon>ApproveTaskService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Services\ApproveTaskService.aspx.designer.cs">
+      <DependentUpon>ApproveTaskService.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\MailActivationForm.aspx.cs">
       <DependentUpon>MailActivationForm.aspx</DependentUpon>

@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Net.Mail;
 using System.Text;
+using pozicam_web_forms.Appcode.BussinessLayer;
+using pozicam_web_forms.Appcode.Models;
+
 namespace pozicam_web_forms.Appcode.BussinessLayer
 {
     public class MailUtils
@@ -32,6 +35,34 @@ namespace pozicam_web_forms.Appcode.BussinessLayer
             smtp.Send(msg);
             return randomCode;
         }
+
+        public static void SendApprovementRequest(ManagmentTask task)
+        {
+            var admins = new List<User>();
+            using (var context = new pozicamskEntities())
+            {
+                admins = (from users in context.User
+                          where users.IsAdmin == true
+                          select users).ToList();
+
+
+                foreach (var admin in admins)
+                {
+                    String randomCode = RandomString(20);
+                    admin.ActivationKey = randomCode;
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = new System.Net.NetworkCredential("info@pozicam.sk", "s2!e3UPkTf");
+                    string url = $@"https://www.pozicam.sk/Services/ApproveTaskService.aspx?key={randomCode}&mail={admin.Email}";
+                    string body = $@"Dobrý deň, Bola pridaná nová úloha: ""{task.Name}"" : <a href=""{url}"">Chcem aktivovať účet</a>";
+                    MailMessage msg = new MailMessage("info@pozicam.sk", admin.Email, "Potvrdenie registrácie", body);
+                    msg.IsBodyHtml = true;
+                    smtp.Host = "smtp.forpsi.com";
+                    smtp.Send(msg);
+
+                }
+            }
+        }
         public static void CreateTestMessage2(string server)
         {
             SmtpClient smtp = new SmtpClient();
@@ -41,5 +72,5 @@ namespace pozicam_web_forms.Appcode.BussinessLayer
             smtp.Send("info@pozicam.sk", "sunvenger@gmail.com", "tst", "tstBody");
         }
     }
-    
+
 }
