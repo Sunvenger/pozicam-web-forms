@@ -85,7 +85,7 @@ namespace pozicam_web_forms.Appcode.BussinessLayer
                 smtp.UseDefaultCredentials = false;
                 smtp.Credentials = new System.Net.NetworkCredential("info@pozicam.sk", "s2!e3UPkTf");
                 string url = $@"https://www.pozicam.sk/Forms/ManagmentTools/PlanningToolForm.aspx?taskid={input_task.Id}";
-                string body = $@"Dobrý deň, Bola Bola schválená úloha, ktorú ste vytvorili: ""{input_task.Name}"" : <a href=""{url}"">Zobraziť úlohu</a>";
+                string body = $@"Dobrý deň, Bola schválená úloha, ktorú ste vytvorili: ""{input_task.Name}"" : <a href=""{url}"">Zobraziť úlohu</a>";
                 MailMessage msg = new MailMessage("info@pozicam.sk", ownerEmail, "Vaša úloha bola schválená", body);
                 msg.IsBodyHtml = true;
                 smtp.Host = "smtp.forpsi.com";
