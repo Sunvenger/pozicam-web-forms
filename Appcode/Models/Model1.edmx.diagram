@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a6622210f8d14a74a622a5877ab2f55a" Name="Diagram1">
+      <Diagram DiagramId="a6622210f8d14a74a622a5877ab2f55a" Name="Diagram1" ZoomLevel="116">
         <EntityTypeShape EntityType="pozicamskModel.Category" Width="1.5" PointX="3.75" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="pozicamskModel.Category_StoreItem" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="pozicamskModel.ManagmentState" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="pozicamskModel.ManagmentTask" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="pozicamskModel.StoreItem" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pozicamskModel.StoreItem_User_Relations" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pozicamskModel.StoreItem_User_Relations" Width="1.5" PointX="8" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="pozicamskModel.User" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
         <AssociationConnector Association="pozicamskModel.FK_Category_StoreItem_Category" ManuallyRouted="false" />
         <AssociationConnector Association="pozicamskModel.FK_Category_StoreItem_StoreItem" ManuallyRouted="false" />
