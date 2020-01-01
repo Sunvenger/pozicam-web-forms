@@ -94,6 +94,18 @@ namespace pozicam_web_forms.Appcode.BussinessLayer
 
             }
         }
+        public static void SendReminder(EmailReminder reminder)
+        {
+            SmtpClient smtp = new SmtpClient();
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential("info@pozicam.sk", "s2!e3UPkTf");
+            MailMessage msg = new MailMessage(reminder.SourceMailAddress, reminder.DestMailAddress, reminder.Subject, reminder.Body);
+            msg.IsBodyHtml = true;
+            smtp.Host = "smtp.forpsi.com";
+            smtp.Send(msg);
+        }
+
+        
         public static void CreateTestMessage2(string server)
         {
             SmtpClient smtp = new SmtpClient();

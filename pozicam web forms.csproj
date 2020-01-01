@@ -210,6 +210,8 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Services\CreateReminderService.aspx" />
+    <Content Include="Services\UpdateEvent.aspx" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
@@ -222,10 +224,14 @@
   <ItemGroup>
     <Compile Include="Appcode\BussinessLayer\AppSecurity.cs" />
     <Compile Include="Appcode\BussinessLayer\MailUtils.cs" />
+    <Compile Include="Appcode\BussinessLayer\MainEvents.cs" />
     <Compile Include="Appcode\Models\Category.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Appcode\Models\Category_StoreItem.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appcode\Models\EmailReminder.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Appcode\Models\ManagmentState.cs">
@@ -334,6 +340,20 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CreateReminderService.aspx.cs">
+      <DependentUpon>CreateReminderService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Services\CreateReminderService.aspx.designer.cs">
+      <DependentUpon>CreateReminderService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\UpdateEvent.aspx.cs">
+      <DependentUpon>UpdateEvent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Services\UpdateEvent.aspx.designer.cs">
+      <DependentUpon>UpdateEvent.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

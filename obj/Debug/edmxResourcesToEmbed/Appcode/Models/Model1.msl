@@ -19,6 +19,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="EmailReminder">
+      <EntityTypeMapping TypeName="pozicamskModel.EmailReminder">
+        <MappingFragment StoreEntitySet="EmailReminder">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DestMailAddress" ColumnName="DestMailAddress" />
+          <ScalarProperty Name="SourceMailAddress" ColumnName="SourceMailAddress" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="TriggerTime" ColumnName="TriggerTime" />
+          <ScalarProperty Name="CreationTime" ColumnName="CreationTime" />
+          <ScalarProperty Name="IsSent" ColumnName="IsSent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="ManagmentState">
       <EntityTypeMapping TypeName="pozicamskModel.ManagmentState">
         <MappingFragment StoreEntitySet="ManagmentState">
