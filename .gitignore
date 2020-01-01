@@ -1837,3 +1837,4 @@ obj/Debug/TempPE/Appcode.Models.Model1.Designer.cs.dll
 obj/Debug/TempPE/Appcode.Models.Model1.cs.dll
 obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 Appcode/Models/Model1.edmx.diagram
+*.diagram
