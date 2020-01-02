@@ -103,6 +103,24 @@ namespace pozicam_web_forms.Forms.ManagmentTools {
         protected global::System.Web.UI.WebControls.Calendar calTaskDeadline;
         
         /// <summary>
+        /// chbReminderSwitch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chbReminderSwitch;
+        
+        /// <summary>
+        /// ddReminder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddReminder;
+        
+        /// <summary>
         /// tbTaskPriority control.
         /// </summary>
         /// <remarks>

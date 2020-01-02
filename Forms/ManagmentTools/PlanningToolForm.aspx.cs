@@ -37,6 +37,7 @@ namespace pozicam_web_forms.Forms.ManagmentTools
 
                 if (!IsPostBack)
                 {
+                    LoadReminderControlPicker();
                     using (var context = new pozicamskEntities())
                     {
                         var tasks = (from task in context.ManagmentTask
@@ -90,7 +91,24 @@ namespace pozicam_web_forms.Forms.ManagmentTools
             }
 
         }
+        protected void LoadReminderControlPicker()
+        {
 
+            var  times = new List<TimeSpan>();
+
+            for (int i = 0; i < 48; i++)
+            {
+                times.Add(new TimeSpan(18000000000*i));
+            }
+            var stringTimes = (from t in times
+                              select t.ToString()).ToList();
+
+
+
+            ddReminder.DataSource = times;
+            ddReminder.DataBind();
+
+        }
 
 
         protected void btnCompleteTask_Click(object sender, EventArgs e)
@@ -259,6 +277,36 @@ namespace pozicam_web_forms.Forms.ManagmentTools
                     context.SaveChanges();
                     Session["DelayedReload"] = true;
                     OnTaskCreated(newTask);
+
+                    if (chbReminderSwitch.Checked)
+                    {
+                        var trigerTime = calTaskDeadline.SelectedDate;
+                        trigerTime.Add(TimeSpan.Parse(ddReminder.SelectedValue));
+
+                        DateTime.Parse(ddReminder.SelectedValue);
+                        var newRem = new EmailReminder
+                        {
+                            Subject = $@"Pripomienka! Úloha ""{newTask.Name}""",
+                            IsSent = false,
+                            Name = "Pripomienka",
+                            SourceMailAddress = "info@pozicam.sk",
+                            Body = $@"<h2  style=""color:#13aff0;text-decoration:none"" >Pripomienka </h2> <br>
+                            Upozornenie na nesplnenú úlohu : ""{newTask.Name}""  <br>
+                            Popis úlohy: ""{newTask.Description}"" <br>
+                            <a href = ""https://www.pozicam.sk/forms/managmentTools/PlanningTool?taskid={newTask.Id}"">link</a><br>
+                            Potrebné stihnúť do {newTask.DeadlineDate}<br>
+                            Priorita: {newTask.Priority}<br>
+                            <h4 style=""color:#ef3f00""> Náklady: €{newTask.Cost}</h4>
+                            <h4 style=""color:#06cf80""> Potencionálny zisk: €{newTask.Rent}</h4>
+
+                            ",
+                            TriggerTime = trigerTime,
+                            CreationTime = DateTime.Now,
+                            DestMailAddress = (Session["CurrentUser"] as User).Email
+                        };
+                        context.EmailReminder.Add(newRem);
+                        context.SaveChanges();
+                    }
                 }
 
                 string url = Request.RawUrl.ToString();

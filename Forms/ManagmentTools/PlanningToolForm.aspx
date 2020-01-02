@@ -51,7 +51,7 @@
                 <hr />
                 <asp:Panel runat="server" ID="panelTaskEditor">
                     <asp:Label runat="server" Text="Task editor"></asp:Label>
-                    <asp:Table runat="server" >
+                    <asp:Table runat="server">
                         <asp:TableRow CssClass="cssFormRow">
 
                             <asp:TableCell>
@@ -66,7 +66,7 @@
                                 <asp:Label runat="server" Text="Popis"></asp:Label>
                             </asp:TableCell>
                             <asp:TableCell>
-                                <asp:TextBox runat="server" ID="tbTaskDescription" TextMode="MultiLine"  CssClass="cssTextBoxMulti"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="tbTaskDescription" TextMode="MultiLine" CssClass="cssTextBoxMulti"></asp:TextBox>
                             </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow CssClass="cssFormRow">
@@ -75,6 +75,17 @@
                             </asp:TableCell>
                             <asp:TableCell>
                                 <asp:Calendar Width="250" Height="250" runat="server" ID="calTaskDeadline"></asp:Calendar>
+                            </asp:TableCell>
+                        </asp:TableRow>
+
+                        <asp:TableRow CssClass="cssFormRow">
+                            <asp:TableCell>
+                                <asp:CheckBox runat="server" CssClass="ChkBoxClass" id="chbReminderSwitch"/>
+                                <asp:Label runat="server" style="margin-left:40px" Text="Pripomienka"></asp:Label>
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:DropDownList runat="server"  ID="ddReminder">
+                                </asp:DropDownList>
                             </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow CssClass="cssFormRow">
