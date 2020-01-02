@@ -1838,3 +1838,4 @@ obj/Debug/TempPE/Appcode.Models.Model1.cs.dll
 obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 Appcode/Models/Model1.edmx.diagram
 *.diagram
+Properties/PublishProfiles/CustomProfile.pubxml.user
